@@ -19,10 +19,10 @@ let rewriteClipboard = () => {
 	navigator.clipboard.readText().then((clipText) => {
 		let newtext = clipText;
 		for (const replacement of SETTINGS.plain) {
-			newtext = newtext.replace(replacement[0], replacement[1]);
+			newtext = newtext.replaceAll(replacement[0], replacement[1]);
 		}
 		for (const replacement of SETTINGS.regex) {
-			newtext = newtext.replace(new RegExp(replacement[0], replacement[2]), replacement[1]);
+			newtext = newtext.replaceAll(new RegExp(replacement[0], replacement[2]), replacement[1]);
 		}
 		if (newtext != clipText) {
 			navigator.clipboard.writeText(newtext).then(() => {}, () => {},);
