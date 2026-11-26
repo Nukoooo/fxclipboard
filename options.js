@@ -131,8 +131,7 @@ function fillHtml() {
 	});
 }
 
-// passing a function here only works in some browsers, Orion wants the promise
-browser.storage.sync.get().then((obj) => {
+browser.storage.sync.get((obj) => {
 	settings = obj;
 	LOADED = true;
 	fillHtml();
